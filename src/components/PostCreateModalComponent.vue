@@ -79,11 +79,23 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+  .v-card {
+    background: var(--content-card-menu-background);
+
+    .text-h6 {
+      color: var(--text-color);
+    }
+    .v-divider {
+      border-color: var(--card-header-border);
+      opacity: .5;
+    }
+  }
   textarea.new-publish-text {
     width: 100%;
     height: auto;
     min-height: 100px;
     background: transparent;
+    color: var(--text-color);
 
     &:focus {
       outline: none;
