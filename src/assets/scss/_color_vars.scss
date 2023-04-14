@@ -1,8 +1,27 @@
 :root {
+  --text-color: #4E5D78;
+  --text-color-grey: #475467;
   --page-background: #F9FAFB;
   --card-background: #fff;
+
+  --card-header-border: #F2F6FA;
   --content-card-menu-background: #fff;
   --content-card-menu-hover-background: #F9FAFB;
   --content-card-menu-color: #667085;
   --content-card-menu-hover-color: #344054;
+  --content-card-menu-active-background: #F9FAFB;
+  --content-card-menu-active-color: #344054;
+
+  --input-background: #FAFBFC;
+  --input-color: #B0B7C3;
+
+  --post-type-border: #FAFBFC;
+
+  --action-link-color: #B0B7C3;
+  --comment-border: #BAC7DB;
+
+  --comment-text: #434E6C;
+  --comment-item-background: #f4f4f4;
+
+  --survey-title: #101828;
 }

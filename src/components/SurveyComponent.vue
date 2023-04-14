@@ -105,7 +105,7 @@ export default {
 
 .survey-wrapper {  
   .title {
-    color: #101828;
+    color: var(--survey-title);
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -179,7 +179,7 @@ export default {
         }
 
         .title {
-          color: #4E5D78;
+          color: var(--text-color);
           margin-bottom: 2px;
         }
 

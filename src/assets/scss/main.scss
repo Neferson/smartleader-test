@@ -54,13 +54,32 @@ body {
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
+    --text-color: #fff;
+    --text-color-grey: #98A2B3;
     --page-background: #1E1E1E;
     --card-background: #363636;
 
+    --card-header-border: #475467;
     --content-card-menu-background: #363636;
-    --content-card-menu-hover-background: #0D1B3A;
+    --content-card-menu-hover-background: #fff;
     --content-card-menu-color: #667085;
     --content-card-menu-hover-color: #fff;
+    --content-card-menu-active-background: #0D1B3A;
+    --content-card-menu-active-color: #fff;
+
+    --input-background: #101828;
+    --input-color: #B0B7C3;
+
+    --post-type-border: #475467;
+
+    --action-link-color: #fff;
+
+    --comment-border: #BAC7DB;
+    --comment-text: #FFFFFF;
+
+    --comment-item-background: #0D1B3A;
+
+    --survey-title: #fff;
   }
 }
 

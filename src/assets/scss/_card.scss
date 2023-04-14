@@ -6,10 +6,11 @@
 
   .default{
     padding: 13px 21px;
+    color: var(--text-color);
   }
   
   .header {
-    border-bottom: 1px solid var(--card-border-color);
+    border-bottom: 1px solid var(--card-header-border);
     display: flex;
     justify-content: space-between;
     padding: 13px 21px;

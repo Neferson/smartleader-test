@@ -216,9 +216,9 @@ ul.content-card-menu {
     }
 
     a.active {
-      background: #F9FAFB;
+      background: var(--content-card-menu-active-background);
       font-weight: 600;
-      color: #344054;
+      color: var(--content-card-menu-active-color);
     }
   }
 }
@@ -251,7 +251,7 @@ ul.content-card-menu {
 }
 
 ul.post-type-menu {
-  border-top: solid 1px #FAFBFC;
+  border-top: solid 1px var(--post-type-border);
   margin-top: 19px;
   padding-top: 19px;
   display: flex;
@@ -263,12 +263,20 @@ ul.post-type-menu {
     display: flex;
     gap: 10px;
     font-size: 12px;
-    color: #B0B7C3;
+    color: var(--action-link-color);
     align-items: center;
   }
 }
 
 @media screen and (min-width: 100px) and (max-width: 768px) {
+
+  ul.post-type-menu {
+    gap: 16px;
+    li {    
+      gap: 4px;
+    }
+  }
+
   .content-wrapper {
     display: block;
     gap: 22px;

@@ -66,8 +66,8 @@ export default {
     width: 100%;
     max-width: 100%;
     border-radius: 15px;
-    background: #FAFBFC;
-    color: #B0B7C3;
+    background: var(--input-background);
+    color: var(--input-color);
     height: 34px;
     border: none;
     padding-left: 15px;

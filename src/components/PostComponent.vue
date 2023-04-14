@@ -158,13 +158,12 @@ export default {
       span {
         font-weight: 400;
         font-size: 12px;
-        color: #B0B7C3;
+        color: var(--action-link-color);
       }
 
       &:first-child {
         span {
           color: #377DFF;
-
         }
       }
     }
@@ -180,7 +179,7 @@ export default {
     align-items: flex-start;
 
     .comment {
-      border: 1px solid #BAC7DB;
+      border: 1px solid var(--comment-border);
       border-radius: 12px;
       padding: 10px 10px 0 10px;
       width: 100%;
@@ -194,6 +193,7 @@ export default {
         background: transparent;
         overflow: hidden;
         resize: none;
+        color: var(--comment-text);
 
         &:focus {
           outline: none;
@@ -222,11 +222,19 @@ export default {
     align-items: flex-start;
     margin-top: 15px;
     .comment {
-      background: #f4f4f4;
+      background: var(--comment-item-background);
       display: block;
       padding: 10px;
       border-radius: 10px;
-      
+      color: var(--text-color);
+    }
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 768px) {
+  .wrapper-action {
+    ul {
+      gap: 20px;
     }
   }
 }

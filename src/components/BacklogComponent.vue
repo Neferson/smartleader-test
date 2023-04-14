@@ -94,7 +94,7 @@ export default {
   p.title-header {
     font-weight: 600;
     font-size: 16px !important;
-    color: #4E5D78;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -111,12 +111,12 @@ export default {
 
   .custom-timeline {
     p.title {
-      color: #344054;
+      color: var(--text-color);
       font-weight: 500;
 
       small {
         font-size: 12px;
-        color: #475467;
+        color: var(--text-color-grey);
       }
     }
 
