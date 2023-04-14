@@ -47,9 +47,11 @@ body {
 
   .w-#{$i} { width: #{$i}px; }
 }
+
 @import 'vars';
 @import 'header';
 @import 'icons';
+@import 'card';
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
