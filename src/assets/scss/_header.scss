@@ -97,6 +97,11 @@ header {
 
 @media screen and (min-width: 820px) and (max-width: 1140px) {
   header {
+    .container{
+      .header-top {
+        padding: 20px 22px;
+      }
+    }   
     nav {
       ul {
         gap: 30px !important;
@@ -107,6 +112,11 @@ header {
 
 @media screen and (min-width: 100px) and (max-width: 820px) {
   header {
+    .container{
+      .header-top {
+        padding: 20px 22px;
+      }
+    }
     .header-control-wrapper, nav {
       display: none !important;
     }
