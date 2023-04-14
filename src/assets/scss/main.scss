@@ -48,7 +48,7 @@ body {
   .w-#{$i} { width: #{$i}px; }
 }
 
-@import 'vars';
+@import 'color_vars';
 @import 'header';
 @import 'icons';
 @import 'card';
