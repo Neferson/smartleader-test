@@ -7,7 +7,7 @@ export default {
     color: String,
     size: {
       type: [String, Number],
-      default: 'sm'
+      default: ''
     }
   },
 
@@ -25,6 +25,7 @@ export default {
 
   computed: {
     parseIconSize () {
+      if (!this.size) return ''
       return typeof this.size  === 'number' ? this.size : this.sizes[this.size]
     }
   }
@@ -34,5 +35,5 @@ export default {
 </script>
 
 <template>
-  <i :class="`${icon}`" v-bind="$attrs" />
+  <i :class="`${icon}`" v-bind="$attrs" :style="`width: ${parseIconSize}px`" @click="$emit('click')" />
 </template>

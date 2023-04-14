@@ -35,8 +35,29 @@ export default {
         <li>
           <IconComponent icon="bell-icon" />
         </li>
-        <li>
-          <IconComponent icon="us-flag-icon" />
+        <li class="flag-select">
+          <v-menu open-on-hover location="bottom" class="pl-4">
+            <template v-slot:activator="{ props }" >
+              <div v-bind="props" >
+                <IconComponent icon="us-flag-icon"/>
+                <IconComponent icon="arrow-down-icon" class="ml-2"/>
+              </div>
+            </template>
+            <v-list>
+              <v-list-item>
+                <template v-slot:prepend>
+                  <IconComponent  icon="us-flag-icon"/>
+                </template>
+                <v-list-item-title></v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title><IconComponent icon="us-flag-icon"/></v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title><IconComponent icon="us-flag-icon"/></v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </li>
         <li class="avatar">
           <img src="../assets/avatar-icon.svg" />
@@ -112,6 +133,14 @@ header {
           gap: 30px;
           li {
             display: flex;
+            justify-content: space-between;
+          }
+
+          li.flag-select {
+            div {
+              display: flex;
+              justify-content: space-between;
+            }
           }
         }
       }
@@ -147,6 +176,7 @@ header {
           filter: brightness(100%);
           font-weight: 500;
         }
+        
       }
     }
   }

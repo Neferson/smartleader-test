@@ -1,7 +1,11 @@
 <script>
 import HeaderComponent from './components/HeaderComponent.vue'
-import { ContainerComponent, CardComponent, InputComponent, IconComponent } from './common/components/index.js'
-
+import SurveyComponent from './components/SurveyComponent.vue'
+import BacklogComponent from './components/BacklogComponent.vue'
+import { ContainerComponent, CardComponent, InputComponent, IconComponent } from '@/common/components/index.js'
+import PostCreateModalComponent from './components/PostCreateModalComponent.vue'
+import { timeSince } from '@/common/helpers/DateHumanReadableHelper.js'
+import PostComponent from './common/components/PostComponent.vue'
 export default {
   name: "App",
   components: {
@@ -9,13 +13,91 @@ export default {
     ContainerComponent,
     CardComponent,
     InputComponent,
-    IconComponent
+    IconComponent,
+    SurveyComponent,
+    BacklogComponent,
+    PostCreateModalComponent,
+    PostComponent
   },
 
   data () {
     return {
-      news: ''
+      news: '',
+      dialog: false,
+      comment: '',
+      radio: null,
+
+      posts: [
+        {
+          id: 1,
+          content: "É TEXTÃO E É DE ❤️: A maioria que esta aqui comigo me conhece por causa do meu trabalho. Talvez vocês não saibam, mas nos momentos mais complicados da minha carreira, vocês estavam aqui me mandando tanta energia positiva que me ajudaram a não desistir! E é por isso que sempre que eu posso faço questão de agradecer a parceria de vocês! 🙏🏼E hoje, nesse primeiro de maio, eu agradeço pelo meu trabalho e por vocês me ajudarem a realiza-lo sempre com um sorriso no rosto. Queria MUITO que todos os trabalhadores desse Brasilzão fossem respeitados e valorizados como merecem! Parece uma realidade distante, né? Mas não custa sonhar! Parabéns para você que luta diariamente para trabalhar e levar o sustento da sua família mesmo diante de todas as dificuldades! E para você que não esta trabalhando: coragem e persistência!!! Dias melhores virão. ✨...",
+          likes: 103,
+          count_comments: 67,
+          share: 405,
+          created_at: new Date('2023-04-12T16:00:04.657Z'),
+          created_at_to_human: this.timeSince(new Date('2023-04-12T16:00:04.657Z'), new Date()),
+          comment_temp: '',
+          comments: [
+            {
+              id: 1,
+              content: "É TEXTÃO E É DE ❤️: A maioria que esta aqui comigo me conhece por causa do meu trabalho. Talvez vocês não saibam, mas nos momentos mais complicados da minha carreira, vocês estavam aqui me mandando tanta energia positiva que me ajudaram a não desistir! E é por isso que sempre que eu posso faço questão de agradecer a parceria de vocês! 🙏🏼E hoje, nesse primeiro de maio, eu agradeço pelo meu trabalho e por vocês me ajudarem a realiza-lo sempre com um sorriso no rosto. Queria MUITO que todos os trabalhadores desse Brasilzão fossem respeitados e valorizados como merecem! Parece uma realidade distante, né? Mas não custa sonhar! Parabéns para você que luta diariamente para trabalhar e levar o sustento da sua família mesmo diante de todas as dificuldades! E para você que não esta trabalhando: coragem e persistência!!! Dias melhores virão. ✨...",
+            }
+          ]
+        }
+      ]
     }
+  },
+
+  mounted () {
+    this.updatePostDateString()
+  },
+
+  methods: {
+    onFocus(event) {
+      this.dialog = true
+    },
+
+   savePost (val) {
+    this.posts.unshift({
+      id: this.posts.length + 1,
+      content: val,
+      likes: 0,
+      count_comments: 0,
+      share: 0,
+      created_at: new Date(),
+      created_at_to_human: this.timeSince(new Date(), new Date()),
+      comment_temp: '',
+      comments: []
+    })
+   },
+
+   saveComment(post_id, comment) {
+    let post = this.posts.find(post => post.id === post_id)
+    post.comments.unshift({
+      id: post.comments.length + 1,
+      content: comment,
+      created_at: new Date()
+    })
+
+    post.comment_temp = ''
+    post.count_comments += 1
+   },
+
+   deletePost(post) {
+    const postIndex = this.posts.indexOf(post)
+    this.posts.splice(postIndex, 1)
+   },
+   timeSince,
+
+   updatePostDateString () {
+    setInterval(() => {
+      this.posts.forEach((post, index) => {       
+        this.posts[index].created_at_to_human = 
+        this.timeSince(new Date(post.created_at), new Date())
+      })
+    }, 15000)
+   }
+
   }
 }
 
@@ -56,14 +138,17 @@ export default {
       </CardComponent>
       <div class="content-wrapper mt-16">
         <div class="content">
+
+          
           <CardComponent class="">
-            <div class="notice-wrapper">
+            <div class="wrapper-whatsnew">
               <IconComponent icon="avatar-news-icon" />
 
               <InputComponent
                 name="news" 
                 v-model="news" 
                 placeholder="What's new with you?"
+                @click="onFocus"
               />
             </div>
             <div>
@@ -81,25 +166,24 @@ export default {
             </div>
           </CardComponent>
 
-          <CardComponent class="mt-25">
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum alias perferendis ratione, sequi magni blanditiis modi porro minima qui obcaecati inventore sit sint illo soluta? dolor sit amet consectetur adipisicing elit. Harum alias perferendis ratione, sequi magni blanditiis modi porro minima qui obcaecati inventore sit sint illo soluta? Saepe perspiciatis est sequi debitis?</span>
-          </CardComponent>
+          <PostComponent
+            v-model="posts"
+            @saveCommentEmit="saveComment"
+            @deletePostEmit="deletePost"
+          />
         </div>
-        <aside>          
-          <CardComponent class="">
-            <template #header>
-              Enquetes
-              <img src="@/assets/ellipsis-icon.svg" />
-            </template>
-            <template #default>
-              <div>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum alias perferendis ratione, sequi magni blanditiis modi porro minima qui obcaecati inventore sit sint illo soluta? dolor sit amet consectetur adipisicing elit. Harum alias perferendis ratione, sequi magni blanditiis modi porro minima qui obcaecati inventore sit sint illo soluta? Saepe perspiciatis est sequi debitis?</span>
-              </div>
-            </template>
-          </CardComponent>
+        <aside>
+          <SurveyComponent />
+          <BacklogComponent />
         </aside>
       </div>
     </ContainerComponent>
+
+    <post-create-modal-component
+      v-if="dialog"
+      @savePost="savePost"
+      @closeDialog="this.dialog = false"
+    />
 </template>
 
 <style lang="scss" scoped>
@@ -154,7 +238,7 @@ ul.content-card-menu {
   }
 }
 
-.notice-wrapper {
+.wrapper-whatsnew {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -182,5 +266,7 @@ ul.post-type-menu {
     align-items: center;
   }
 }
+
+
 
 </style>

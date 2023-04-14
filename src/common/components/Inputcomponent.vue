@@ -33,6 +33,10 @@ export default {
 
     onChange (event) {
       this.$emit('update:modelValue', event.target.value)
+    },
+
+    onFocus (event) {
+      this.$emit('update:modelValue', event.target.value)
     }
   },
 }
@@ -49,6 +53,8 @@ export default {
       @input="onInput" 
       @change="onChange"
       :placeholder="placeholder"
+      @click="$emit('click')"
+      @focus="onFocus"
     />
   </div>
 </template>
