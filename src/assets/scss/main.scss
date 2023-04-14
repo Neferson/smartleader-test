@@ -1,10 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root {
-  --page-background: #F9FAFB;
-}
-
 * {
   font-family: 'Inter';
   font-weight: 400;
@@ -51,15 +47,14 @@ body {
 
   .w-#{$i} { width: #{$i}px; }
 }
-
+@import 'vars';
 @import 'header';
 @import 'icons';
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
     --page-background: #1E1E1E;
-    --page-title: #e9d970;
-    --page-text: #75715e;
+    --card-background: #363636;
   }
 }
 
