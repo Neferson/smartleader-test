@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <CardComponent class="mt-7" v-for="post in  modelValue" :key="`post-${post.id}`">
+  <CardComponent class="mt-4" v-for="post in  modelValue" :key="`post-${post.id}`">
     <template #header>
       <div class="publisher-profile">
         <IconComponent icon="avatar-news-icon" />

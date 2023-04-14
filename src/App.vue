@@ -5,7 +5,7 @@ import BacklogComponent from './components/BacklogComponent.vue'
 import { ContainerComponent, CardComponent, InputComponent, IconComponent } from '@/common/components/index.js'
 import PostCreateModalComponent from './components/PostCreateModalComponent.vue'
 import { timeSince } from '@/common/helpers/DateHumanReadableHelper.js'
-import PostComponent from './common/components/PostComponent.vue'
+import PostComponent from '@/components/PostComponent.vue'
 export default {
   name: "App",
   components: {
@@ -136,10 +136,9 @@ export default {
           </li>
         </ul>
       </CardComponent>
-      <div class="content-wrapper mt-16">
-        <div class="content">
 
-          
+      <div class="content-wrapper">
+        <div class="content">
           <CardComponent class="">
             <div class="wrapper-whatsnew">
               <IconComponent icon="avatar-news-icon" />
@@ -230,11 +229,13 @@ ul.content-card-menu {
 
   .content {
     width: 752px;
+    margin-top: 16px;
   }
 
   aside{
     width: 100%;
     max-width: 456px;
+    margin-top: 16px;
   }
 }
 
@@ -264,6 +265,22 @@ ul.post-type-menu {
     font-size: 12px;
     color: #B0B7C3;
     align-items: center;
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 768px) {
+  .content-wrapper {
+    display: block;
+    gap: 22px;
+
+    .content {
+      width: 100%;
+    }
+
+    aside{
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
 
