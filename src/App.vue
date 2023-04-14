@@ -199,17 +199,17 @@ ul.content-card-menu {
       justify-content: center;
       align-items: center;
       padding: 8px 12px;
-      color: #667085;
+      color: var( --content-card-menu-color);
       border-radius: 6px;
       font-style: normal;
       font-weight: 500;
       line-height: 20px;
-      background: #fff;
+      background: var( --content-card-menu-background);
       transition: all 0.18s;
       
 
       &:hover{
-        background: #F9FAFB;
+        background: var(--content-card-menu-hover-background);
         font-weight: 600;
         color: #344054;
       }
